@@ -68,7 +68,7 @@ def stuDetails(request):
             json_data = JSONRenderer().render(serializer.errors)
             return HttpResponse(json_data, content_type = 'application/json')
 
-
+# Delete data
     if request.method == 'DELETE':
         json_data = request.body
         stream = io.BytesIO(json_data)
