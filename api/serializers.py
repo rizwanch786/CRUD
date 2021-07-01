@@ -1,11 +1,28 @@
-from django.db.models import fields
 from rest_framework import serializers
 from .models import Student
+
+# def start_with_r(value):
+#     if value[0].lower() != 'r':
+#         raise serializers.ValidationError("Value Should Be Start with 'R'")
+
 class StudentSerializer(serializers.ModelSerializer):
+    # # name = serializers.CharField(read_only = True)
+    # name = serializers.CharField(validators = [start_with_r])
     class Meta:
         model = Student
         fields = '__all__'
+        # read_only_fields = ['name', 'city']
+    # Field level validation
+    def validate_roll(self, value):
+        if value  >= 200:
+            raise serializers.ValidationError("Seats are full")
+        return value
 
+    # # Object Level Validation
+    # def validate(self, data):
+    #     if data['name'].lower() == "rizwan" and data['city'] != "Okara":
+    #         raise serializers.ValidationError("City name must be 'Okara'")
+    #         return data
 
 
 
