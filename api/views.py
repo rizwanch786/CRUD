@@ -41,10 +41,10 @@ class StudentAPI(View):
                 'msg': 'Data Inserted Sucessfully'
             }
             json_data = JSONRenderer().render(M)
-            return HttpResponse(json_data, content_type = 'application/json')
         else:
             json_data = JSONRenderer().render(serializer.errors)
-            return HttpResponse(json_data, content_type = 'application/json')
+
+        return HttpResponse(json_data, content_type = 'application/json')
     
     def put(self, request, *args, **kwargs):
         json_data = request.body
@@ -59,10 +59,10 @@ class StudentAPI(View):
                 'msg': 'Data Updated Sucessfully'
             }
             json_data = JSONRenderer().render(M)
-            return HttpResponse(json_data, content_type = 'application/json')
         else:
             json_data = JSONRenderer().render(serializer.errors)
-            return HttpResponse(json_data, content_type = 'application/json')
+
+        return HttpResponse(json_data, content_type = 'application/json')
 
     def delete(self, request, *args, **kwargs):
         json_data = request.body
